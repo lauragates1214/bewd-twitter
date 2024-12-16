@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
         value: session.token,
         httponly: true
       }
-
       render json: { success: true }
     else
       render json: { success: false }
