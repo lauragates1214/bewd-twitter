@@ -16,4 +16,12 @@ class User < ApplicationRecord
     presence: true, 
     uniqueness: true,
     :length => { minimum: 5, maximum: 500 }
+
+  after_validation :hash_password
+
+  private
+
+  def hash_password
+    self.password = BCrypt::Password.create(password)
+  end
 end
